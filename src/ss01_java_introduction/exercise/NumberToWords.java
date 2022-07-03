@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class NumberToWords {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("nhập số nguyên có 3 chữ số: ");
+        System.out.print("nhập số nguyên có 0-999: ");
         int number = scanner.nextInt();
         if (number < 10) {
             switch (number) {
@@ -106,8 +106,7 @@ public class NumberToWords {
                 default:
                     System.out.println("out of ability!");
             }
-
-            if (number % 10 != 0) {
+             if (number % 10 != 0) {
                 switch (number % 10) {
                     case 1:
                         System.out.println("-one");
@@ -173,7 +172,7 @@ public class NumberToWords {
                     System.out.println("out of ability!");
             }
 
-            int newNumber = number - (number/100)*100;
+            int newNumber = number - (number / 100) * 100;
             if (newNumber != 0) {
                 if (newNumber < 10) {
                     switch (newNumber) {
