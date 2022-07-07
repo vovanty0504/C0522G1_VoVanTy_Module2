@@ -1,6 +1,5 @@
 package ss05_Acces_static_method_property.execise.access_modfier;
 
-import ss05_Acces_static_method_property.execise.access_modfier.Circle;
 
 public class MainCircle {
     public static void main(String[] args) {
