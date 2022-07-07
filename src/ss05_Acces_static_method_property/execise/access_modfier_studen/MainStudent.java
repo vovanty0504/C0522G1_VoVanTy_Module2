@@ -1,4 +1,4 @@
-package ss05_Acces_static_method_property.execise.access_modfier2;
+package ss05_Acces_static_method_property.execise.access_modfier_studen;
 
 public class MainStudent {
     public static void main(String[] args) {

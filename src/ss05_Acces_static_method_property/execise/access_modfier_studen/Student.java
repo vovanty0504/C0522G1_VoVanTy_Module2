@@ -1,4 +1,4 @@
-package ss05_Acces_static_method_property.execise.access_modfier2;
+package ss05_Acces_static_method_property.execise.access_modfier_studen;
 
 public class Student {
     private String name = "John";
