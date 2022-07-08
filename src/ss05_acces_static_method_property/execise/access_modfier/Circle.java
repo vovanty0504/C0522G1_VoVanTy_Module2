@@ -1,4 +1,4 @@
-package ss05_Acces_static_method_property.execise.access_modfier;
+package ss05_acces_static_method_property.execise.access_modfier;
 
 public class Circle {
     private double radius = 1.0;
@@ -7,7 +7,6 @@ public class Circle {
     public Circle(double radius, String color) {
         this.radius = radius;
         this.color = color;
-
     }
 
     public Circle() {

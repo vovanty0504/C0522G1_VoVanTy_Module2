@@ -1,4 +1,4 @@
-package ss05_Acces_static_method_property.execise.access_modfier;
+package ss05_acces_static_method_property.execise.access_modfier;
 
 
 public class MainCircle {

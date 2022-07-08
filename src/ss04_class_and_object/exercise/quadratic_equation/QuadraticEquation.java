@@ -5,7 +5,7 @@ public class QuadraticEquation {
     double numberB;
     double numberC;
 
-    QuadraticEquation(double numberA, double numberB, double numberC) {
+     public QuadraticEquation(double numberA, double numberB, double numberC) {
         this.numberA = numberA;
         this.numberB = numberB;
         this.numberC = numberC;

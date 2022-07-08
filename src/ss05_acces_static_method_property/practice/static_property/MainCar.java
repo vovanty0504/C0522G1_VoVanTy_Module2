@@ -1,4 +1,4 @@
-package ss05_Acces_static_method_property.practice.static_property;
+package ss05_acces_static_method_property.practice.static_property;
 
 public class MainCar {
     public static void main(String[] args) {
