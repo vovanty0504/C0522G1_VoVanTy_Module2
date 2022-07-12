@@ -16,7 +16,8 @@ public class Main {
 
         System.out.println("After-resize: ");
         for (Shape shape : shapes) {
-            shape.resize(percent);
+            if (shape instanceof Resizeable)
+            ((Resizeable) shape).resize(percent);
             System.out.println(shape + "\n AREA: " + shape.getArea());
         }
     }
