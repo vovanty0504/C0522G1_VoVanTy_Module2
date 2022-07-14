@@ -1,7 +1,7 @@
 package ss09_list.execise.array_list.controller;
 
 import ss09_list.execise.array_list.model.Student;
-import ss09_list.execise.array_list.service.StudentService;
+import ss09_list.execise.array_list.service.impl.StudentService;
 
 public class MyListController {
     public void displayMenu(){

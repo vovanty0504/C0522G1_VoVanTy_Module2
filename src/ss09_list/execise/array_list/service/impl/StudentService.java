@@ -1,4 +1,6 @@
-package ss09_list.execise.array_list.service;
+package ss09_list.execise.array_list.service.impl;
+
+import ss09_list.execise.array_list.service.IStudentService;
 
 import java.util.Arrays;
 
