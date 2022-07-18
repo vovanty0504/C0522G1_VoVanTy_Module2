@@ -6,7 +6,7 @@ import ss11_map.execise.arraylist.service.impl.ProductService;
 import java.util.Scanner;
 
 public class MainController {
-    public static void main(String[] args) {
+    public static void displayMenu() {
         Scanner scanner = new Scanner(System.in);
         IProductService product = new ProductService();
 
