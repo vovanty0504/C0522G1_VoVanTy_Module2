@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TeacherService implements IPersonService {
     private static Scanner scanner = new Scanner(System.in);
-    private List<Teacher> teacherList = new ArrayList<>();
+    private static List<Teacher> teacherList = new ArrayList<>();
 
 
     public void add() {
@@ -22,30 +22,66 @@ public class TeacherService implements IPersonService {
     public void remove() {
         System.out.print("nhập id cần xóa: ");
         int idRemove = Integer.parseInt(scanner.nextLine());
-        boolean isFlag=false;
-        for (Teacher teacher : teacherList){
-            if(teacher.getId()==idRemove){
+        boolean isFlag = false;
+        for (Teacher teacher : teacherList) {
+            if (teacher.getId() == idRemove) {
                 System.out.println("bạn có chắc muốn xóa hay không? \n " +
                         "1 có \n" +
                         "2 không \n");
                 int chooseYesNo = Integer.parseInt(scanner.nextLine());
-                if(chooseYesNo==1){
+                if (chooseYesNo == 1) {
                     teacherList.remove(teacher);
                     System.out.println("Xóa thành công");
                 }
-                isFlag=true;
+                isFlag = true;
                 break;
             }
         }
-        if (!isFlag){
+        if (!isFlag) {
             System.out.println("xóa thành công");
         }
     }
 
 
     public void display() {
-        for (Teacher teacher : teacherList){
+        for (Teacher teacher : teacherList) {
             System.out.println(teacher);
+        }
+    }
+
+    @Override
+    public void searchID() {
+        System.out.println("nhập ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        boolean isFlag = false;
+
+        for (Teacher teacher : teacherList) {
+            if (teacher.getId() == id) {
+                System.out.println(teacher);
+            }
+            isFlag = true;
+            break;
+        }
+        if (!isFlag) {
+            System.out.println("Không tìm thấy");
+        }
+
+    }
+
+    @Override
+    public void searchName() {
+        System.out.println("nhập tên tìm kiếm");
+        String name = scanner.nextLine();
+        boolean isFlag = false;
+
+        for (Teacher teacher : teacherList) {
+            if (teacher.getName().contains(name)) {
+                System.out.println(teacher);
+                isFlag = true;
+            }
+        }
+        if (!isFlag) {
+            System.out.println("không tìm thấy");
         }
     }
 

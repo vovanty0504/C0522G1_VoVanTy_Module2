@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarService implements ICarService {
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Car> listCar = new ArrayList<>();
+    private static  Scanner scanner = new Scanner(System.in);
+    private static  List<Car> listCar = new ArrayList<>();
 
     @Override
     public void add() {

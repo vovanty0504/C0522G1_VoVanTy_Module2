@@ -6,8 +6,8 @@ import ss00_thuat_toan.execise.service.impl.TeacherService;
 import java.util.Scanner;
 
 public class TeacherController {
-    private Scanner scanner = new Scanner(System.in);
-    IPersonService iPersonService = new TeacherService();
+    private static Scanner scanner = new Scanner(System.in);
+    private static   IPersonService iPersonService = new TeacherService();
 
 
         public void menuTeacher() {
@@ -15,7 +15,9 @@ public class TeacherController {
                 System.out.println("1. Thêm mới giảng viên \n" +
                         "2. Xóa giảng viên \n" +
                         "3. Xem danh sách giảng viên \n" +
-                        "4. Quay về menu chính.\n");
+                        "4. Tìm kiếm theo ID\n" +
+                        "5. Tìm kiếm theo tên\n"+
+                        "6. Quay về menu chính.\n");
                 System.out.print("Mời bạn nhập lựa chọn: \n");
                 int choose = Integer.parseInt(scanner.nextLine());
                 switch (choose) {
@@ -29,6 +31,12 @@ public class TeacherController {
                         iPersonService.display();
                         break;
                     case 4:
+                        iPersonService.searchID();
+                        break;
+                    case 5:
+                        iPersonService.searchName();
+                        break;
+                    case 6:
                         return;
                 }
             } while (true);

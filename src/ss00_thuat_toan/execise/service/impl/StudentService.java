@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentService implements IPersonService {
-    private List<Student> studentList = new ArrayList<>();
+    private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
 
@@ -25,6 +25,41 @@ public class StudentService implements IPersonService {
         }
     }
 
+    @Override
+    public void searchID() {
+
+        System.out.println("nhập id cần tìm: ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        boolean isFlag = false;
+        for (Student student : studentList) {
+            if (student.getId() == id) {
+                System.out.println(student);
+            }
+            isFlag = true;
+        }
+        if (!isFlag) {
+            System.out.println("không tìm thấy");
+        }
+
+    }
+
+    @Override
+    public void searchName() {
+        System.out.println("nhập tên tìm theo tên");
+        String searchName = scanner.nextLine();
+        boolean isFlag = false;
+
+        for (Student student : studentList) {
+            if (student.getName().contains(searchName)) {
+                System.out.println(student);
+                isFlag = true;
+            }
+        }
+        if (!isFlag) {
+            System.out.println("Không tìm thấy!");
+        }
+    }
 
 
     public void remove() {
@@ -45,14 +80,14 @@ public class StudentService implements IPersonService {
                 break;
             }
         }
-        if(!isFlag){
+        if (!isFlag) {
             System.out.println("không tìm thấy");
         }
     }
 
 
     public static Student infoStudent() {
-        System.out.print("nhập id ");
+        System.out.print("nhập ID: ");
         int id = Integer.parseInt(scanner.nextLine());
 
         System.out.print("Nhập name: ");
