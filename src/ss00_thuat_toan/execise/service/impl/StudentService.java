@@ -3,13 +3,17 @@ package ss00_thuat_toan.execise.service.impl;
 import ss00_thuat_toan.execise.modle.Student;
 import ss00_thuat_toan.execise.service.IPersonService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class StudentService implements IPersonService {
     private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+
+    static {
+        studentList.add(new Student(1, "Võ Văn Tý", "5/4/2001", "Nam", 10, "Code Gym"));
+        studentList.add(new Student(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", 9, "Code Gym"));
+        studentList.add(new Student(3, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+    }
 
 
     @Override
@@ -51,7 +55,7 @@ public class StudentService implements IPersonService {
         boolean isFlag = false;
 
         for (Student student : studentList) {
-            if (student.getName().contains(searchName)) {
+            if (student.getName().toLowerCase().contains(searchName.toLowerCase())) {
                 System.out.println(student);
                 isFlag = true;
             }
@@ -59,6 +63,23 @@ public class StudentService implements IPersonService {
         if (!isFlag) {
             System.out.println("Không tìm thấy!");
         }
+    }
+
+    @Override
+    public void sortName() {
+        boolean isSwap = true;
+        for (int i = 0; i < studentList.size() && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < studentList.size() - 1 - i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
+                    Collections.swap(studentList, j, j + 1);
+                    isSwap = true;
+
+                }
+            }
+        }
+        display();
+
     }
 
 

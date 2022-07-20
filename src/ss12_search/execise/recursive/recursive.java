@@ -2,7 +2,7 @@ package ss12_search.execise.recursive;
 
 public class recursive {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9,10};
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int number = 5;
         System.out.println(recursive(array, 0, array.length - 1, number));
     }

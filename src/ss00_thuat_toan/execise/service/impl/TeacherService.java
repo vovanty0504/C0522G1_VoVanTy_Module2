@@ -1,15 +1,23 @@
 package ss00_thuat_toan.execise.service.impl;
 
+import ss00_thuat_toan.execise.modle.Student;
 import ss00_thuat_toan.execise.modle.Teacher;
 import ss00_thuat_toan.execise.service.IPersonService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class TeacherService implements IPersonService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Teacher> teacherList = new ArrayList<>();
+
+    static {
+        teacherList.add(new Teacher(1, "Võ Văn Tý", "5/4/2001", "Nam", "Toán"));
+        teacherList.add(new Teacher(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", "toán"));
+        teacherList.add(new Teacher(3, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+    }
 
 
     public void add() {
@@ -75,7 +83,7 @@ public class TeacherService implements IPersonService {
         boolean isFlag = false;
 
         for (Teacher teacher : teacherList) {
-            if (teacher.getName().contains(name)) {
+            if (teacher.getName().toLowerCase().contains(name.toLowerCase())) {
                 System.out.println(teacher);
                 isFlag = true;
             }
@@ -83,6 +91,22 @@ public class TeacherService implements IPersonService {
         if (!isFlag) {
             System.out.println("không tìm thấy");
         }
+    }
+
+    @Override
+    public void sortName() {
+        boolean isSwap = true;
+        for (int i = 0; i < teacherList.size() && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < teacherList.size() - 1 - i; j++) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
+                    Collections.swap(teacherList, j, j + 1);
+                    isSwap = true;
+                }
+            }
+        }
+        display();
+
     }
 
     public static Teacher infoTeacher() {

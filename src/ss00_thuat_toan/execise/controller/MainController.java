@@ -13,7 +13,7 @@ public class MainController {
             System.out.println("Chào mừng bạn đến với Codegym. \n" +
                     "1. Quản lí sinh viên.\n" +
                     "2. Quản lí giảng viên \n" +
-                    "4. Thoát chương trình \n");
+                    "3. Thoát chương trình \n");
 
             System.out.print("Mời bạn nhập lựa chọn: \n");
             int choose = Integer.parseInt(scanner.nextLine());
