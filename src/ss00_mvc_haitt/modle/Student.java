@@ -1,4 +1,4 @@
-package ss00_thuat_toan.execise.modle;
+package ss00_mvc_haitt.modle;
 
 public class Student extends Person {
     private double point;

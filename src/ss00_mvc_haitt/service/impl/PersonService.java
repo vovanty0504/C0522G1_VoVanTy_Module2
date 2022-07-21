@@ -1,6 +1,6 @@
-package ss00_thuat_toan.execise.service.impl;
+package ss00_mvc_haitt.service.impl;
 
-import ss00_thuat_toan.execise.service.IPersonService;
+import ss00_mvc_haitt.service.IPersonService;
 
 public class PersonService<E> implements IPersonService {
     @Override

@@ -1,8 +1,8 @@
-package ss00_thuat_toan.execise.service.impl;
+package ss00_mvc_haitt.service.impl;
 
-import ss00_thuat_toan.execise.exception.DuplicateIDException;
-import ss00_thuat_toan.execise.modle.Student;
-import ss00_thuat_toan.execise.service.IPersonService;
+import ss00_mvc_haitt.exception.DuplicateIDException;
+import ss00_mvc_haitt.modle.Student;
+import ss00_mvc_haitt.service.IPersonService;
 
 import java.util.*;
 
@@ -53,6 +53,7 @@ public class StudentService implements IPersonService {
                 System.out.println(student);
             }
             isFlag = true;
+            break;
         }
         if (!isFlag) {
             System.out.println("không tìm thấy");
@@ -86,8 +87,8 @@ public class StudentService implements IPersonService {
                 if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
                     Collections.swap(studentList, j, j + 1);
                     isSwap = true;
-                }
-                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) == 0) {
+
+                } else if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) == 0) {
                     if (studentList.get(j).getId() > studentList.get(j + 1).getId()) {
                         Collections.swap(studentList, j, j + 1);
                     }

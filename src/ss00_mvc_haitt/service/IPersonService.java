@@ -1,4 +1,4 @@
-package ss00_thuat_toan.execise.service;
+package ss00_mvc_haitt.service;
 
 public interface IPersonService<E> {
     void add();

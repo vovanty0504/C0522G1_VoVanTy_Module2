@@ -1,4 +1,4 @@
-package ss00_thuat_toan.execise.controller;
+package ss00_mvc_haitt.controller;
 
 
 import java.util.Scanner;

@@ -1,24 +1,23 @@
-package ss00_thuat_toan.execise.controller;
+package ss00_mvc_haitt.controller;
 
-import ss00_thuat_toan.execise.exception.DuplicateIDException;
-import ss00_thuat_toan.execise.service.IPersonService;
-import ss00_thuat_toan.execise.service.impl.StudentService;
+import ss00_mvc_haitt.service.IPersonService;
+import ss00_mvc_haitt.service.impl.TeacherService;
 
 import java.util.Scanner;
 
-public class StudentController {
+public class TeacherController {
     private static Scanner scanner = new Scanner(System.in);
-    private static IPersonService iPersonService = new StudentService();
+    private static IPersonService iPersonService = new TeacherService();
+    int choose;
 
-    public void menuStudent() {
-        int choose;
+    public void menuTeacher() {
         do {
-            System.out.println("1. Thêm mới học sinh \n" +
-                    "2. Xóa học sinh \n" +
-                    "3. Xem danh sách học sinh \n" +
-                    "4. Tìm kiếm học sinh theo ID\n" +
-                    "5. Tìm kiếm học sinh theo tên\n" +
-                    "6. Sắp xếp học sinh theo tên\n" +
+            System.out.println("1. Thêm mới giảng viên \n" +
+                    "2. Xóa giảng viên \n" +
+                    "3. Xem danh sách giảng viên \n" +
+                    "4. Tìm kiếm theo ID\n" +
+                    "5. Tìm kiếm theo tên\n" +
+                    "6. Sắp xếp theo tên\n" +
                     "7. Quay về menu chính.\n");
             while (true) {
                 try {
@@ -29,7 +28,6 @@ public class StudentController {
                     System.out.println("Bạn đã nhập sai cú pháp vui lòng nhập số! ");
                 }
             }
-
             switch (choose) {
                 case 1:
                     iPersonService.add();
@@ -56,5 +54,5 @@ public class StudentController {
             }
         } while (true);
     }
-
 }
+

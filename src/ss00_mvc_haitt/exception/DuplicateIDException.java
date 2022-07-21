@@ -1,4 +1,4 @@
-package ss00_thuat_toan.execise.exception;
+package ss00_mvc_haitt.exception;
 
 public class DuplicateIDException extends Throwable {
     public DuplicateIDException(String message) {

@@ -1,9 +1,8 @@
-package ss00_thuat_toan.execise.service.impl;
+package ss00_mvc_haitt.service.impl;
 
-import ss00_thuat_toan.execise.exception.DuplicateIDException;
-import ss00_thuat_toan.execise.modle.Student;
-import ss00_thuat_toan.execise.modle.Teacher;
-import ss00_thuat_toan.execise.service.IPersonService;
+import ss00_mvc_haitt.exception.DuplicateIDException;
+import ss00_mvc_haitt.service.IPersonService;
+import ss00_mvc_haitt.modle.Teacher;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,8 +122,8 @@ public class TeacherService implements IPersonService {
                 if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
                     Collections.swap(teacherList, j, j + 1);
                     isSwap = true;
-                }
-                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
+
+                } else if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
                     if (teacherList.get(j).getId() > teacherList.get(j + 1).getId()) {
                         Collections.swap(teacherList, j, j + 1);
                     }
