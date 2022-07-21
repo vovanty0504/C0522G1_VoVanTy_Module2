@@ -17,6 +17,10 @@ public class TeacherService implements IPersonService {
         teacherList.add(new Teacher(1, "Võ Văn Tý", "5/4/2001", "Nam", "Toán"));
         teacherList.add(new Teacher(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", "toán"));
         teacherList.add(new Teacher(3, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+        teacherList.add(new Teacher(7, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+        teacherList.add(new Teacher(6, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+        teacherList.add(new Teacher(4, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+        teacherList.add(new Teacher(5, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
     }
 
 
@@ -102,6 +106,11 @@ public class TeacherService implements IPersonService {
                 if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
                     Collections.swap(teacherList, j, j + 1);
                     isSwap = true;
+                }
+                  if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
+                    if (teacherList.get(j).getId() > teacherList.get(j + 1).getId()) {
+                        Collections.swap(teacherList, j, j + 1);
+                    }
                 }
             }
         }

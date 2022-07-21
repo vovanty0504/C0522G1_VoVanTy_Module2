@@ -13,6 +13,10 @@ public class StudentService implements IPersonService {
         studentList.add(new Student(1, "Võ Văn Tý", "5/4/2001", "Nam", 10, "Code Gym"));
         studentList.add(new Student(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", 9, "Code Gym"));
         studentList.add(new Student(3, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+        studentList.add(new Student(4, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+        studentList.add(new Student(7, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+        studentList.add(new Student(6, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+        studentList.add(new Student(5, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
     }
 
 
@@ -74,7 +78,11 @@ public class StudentService implements IPersonService {
                 if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
                     Collections.swap(studentList, j, j + 1);
                     isSwap = true;
-
+                }
+                if(studentList.get(j).getName().compareTo(studentList.get(j+1).getName())==0){
+                    if(studentList.get(j).getId()>studentList.get(j+1).getId()){
+                        Collections.swap(studentList,j,j+1);
+                    }
                 }
             }
         }
