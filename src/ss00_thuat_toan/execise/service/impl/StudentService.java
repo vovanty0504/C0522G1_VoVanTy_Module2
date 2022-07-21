@@ -1,5 +1,6 @@
 package ss00_thuat_toan.execise.service.impl;
 
+import ss00_thuat_toan.execise.exception.DuplicateIDException;
 import ss00_thuat_toan.execise.modle.Student;
 import ss00_thuat_toan.execise.service.IPersonService;
 
@@ -35,9 +36,16 @@ public class StudentService implements IPersonService {
 
     @Override
     public void searchID() {
-
-        System.out.println("nhập id cần tìm: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true) {
+            try {
+                System.out.println("nhập id cần tìm: ");
+                id = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai cú pháp Vui lòng nhập lại số!");
+            }
+        }
 
         boolean isFlag = false;
         for (Student student : studentList) {
@@ -79,21 +87,28 @@ public class StudentService implements IPersonService {
                     Collections.swap(studentList, j, j + 1);
                     isSwap = true;
                 }
-                if(studentList.get(j).getName().compareTo(studentList.get(j+1).getName())==0){
-                    if(studentList.get(j).getId()>studentList.get(j+1).getId()){
-                        Collections.swap(studentList,j,j+1);
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) == 0) {
+                    if (studentList.get(j).getId() > studentList.get(j + 1).getId()) {
+                        Collections.swap(studentList, j, j + 1);
                     }
                 }
             }
         }
         display();
-
     }
 
 
     public void remove() {
-        System.out.print("nhập id cần xóa: ");
-        int idRemove = Integer.parseInt(scanner.nextLine());
+        int idRemove;
+        while (true) {
+            try {
+                System.out.print("nhập id cần xóa: ");
+                idRemove = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai cú pháp Vui lòng nhập lại số!");
+            }
+        }
         boolean isFlag = false;
         for (Student student : studentList) {
             if (student.getId() == idRemove) {
@@ -116,8 +131,24 @@ public class StudentService implements IPersonService {
 
 
     public static Student infoStudent() {
-        System.out.print("nhập ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true) {
+            try {
+                System.out.print("Nhập id: ");
+                id = Integer.parseInt(scanner.nextLine());
+
+                for (Student student : studentList) {
+                    if (student.getId() == id) {
+                        throw new DuplicateIDException("Trùng ID, vui lòng nhập ID lại!");
+                    }
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (DuplicateIDException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         System.out.print("Nhập name: ");
         String name = scanner.nextLine();
@@ -125,17 +156,23 @@ public class StudentService implements IPersonService {
         System.out.print("Nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
 
-
-        System.out.print("nhập giới tính: ");
+        System.out.print("vui lòng nhập giới tính:");
         String gender = scanner.nextLine();
 
-        System.out.print("Nhập điểm: ");
-        double point = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Nhập tên trường: ");
+        System.out.print("Nhập tên lớp: ");
         String nameSchool = scanner.nextLine();
-        Student student = new Student(id, name, dateOfBirth, gender, point, nameSchool);
-        return student;
 
+        double point;
+        while (true) {
+            try {
+                System.out.print("Nhập điểm: ");
+                point = Double.parseDouble(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("Vui lòng nhập số!");
+            }
+        }
+        return new Student(id, name, dateOfBirth, gender, point, nameSchool);
     }
 }

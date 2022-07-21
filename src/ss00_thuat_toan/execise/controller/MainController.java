@@ -9,14 +9,24 @@ public class MainController {
         StudentController studentController = new StudentController();
         TeacherController teacherController = new TeacherController();
 
+        int choose;
+
         do {
             System.out.println("Chào mừng bạn đến với Codegym. \n" +
                     "1. Quản lí sinh viên.\n" +
                     "2. Quản lí giảng viên \n" +
                     "3. Thoát chương trình \n");
 
-            System.out.print("Mời bạn nhập lựa chọn: \n");
-            int choose = Integer.parseInt(scanner.nextLine());
+            while (true) {
+                try {
+                    System.out.print("Mời bạn nhập lựa chọn: ");
+                    choose = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Bạn đã nhập sai cú pháp vui lòng nhập số! ");
+                }
+            }
+
             switch (choose) {
                 case 1:
                     studentController.menuStudent();
@@ -25,7 +35,10 @@ public class MainController {
                     teacherController.menuTeacher();
                     break;
                 case 3:
+                    System.out.println("Cảm ớn quý khách!");
                     System.exit(0);
+                default:
+                    System.out.println("Vui lòng nhập lại! ");
 
             }
         } while (true);

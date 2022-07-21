@@ -1,8 +1,6 @@
 package ss14_debug_exception.execise.controller;
-
 import ss14_debug_exception.execise.exception.IllegalTriangleException;
 import ss14_debug_exception.execise.modle.Triangle;
-
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +9,7 @@ public class Main {
         double firstEdge;
         double secondEdge;
         double thirdEdge;
-
+        
         while (true) {
             try {
                 System.out.print("nhập cạnh thứ nhất 1: ");

@@ -1,5 +1,6 @@
 package ss00_thuat_toan.execise.service.impl;
 
+import ss00_thuat_toan.execise.exception.DuplicateIDException;
 import ss00_thuat_toan.execise.modle.Student;
 import ss00_thuat_toan.execise.modle.Teacher;
 import ss00_thuat_toan.execise.service.IPersonService;
@@ -32,8 +33,17 @@ public class TeacherService implements IPersonService {
 
 
     public void remove() {
-        System.out.print("nhập id cần xóa: ");
-        int idRemove = Integer.parseInt(scanner.nextLine());
+        int idRemove;
+        while (true) {
+            try {
+                System.out.print("nhập id cần xóa: ");
+                idRemove = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai cú pháp Vui lòng nhập lại số!");
+            }
+        }
+
         boolean isFlag = false;
         for (Teacher teacher : teacherList) {
             if (teacher.getId() == idRemove) {
@@ -63,10 +73,18 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void searchID() {
-        System.out.println("nhập ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        boolean isFlag = false;
+        int id;
+        while (true) {
+            try {
+                System.out.print("nhập id cần xóa: ");
+                id = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai cú pháp Vui lòng nhập lại số!");
+            }
+        }
 
+        boolean isFlag = false;
         for (Teacher teacher : teacherList) {
             if (teacher.getId() == id) {
                 System.out.println(teacher);
@@ -77,7 +95,6 @@ public class TeacherService implements IPersonService {
         if (!isFlag) {
             System.out.println("Không tìm thấy");
         }
-
     }
 
     @Override
@@ -107,7 +124,7 @@ public class TeacherService implements IPersonService {
                     Collections.swap(teacherList, j, j + 1);
                     isSwap = true;
                 }
-                  if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
                     if (teacherList.get(j).getId() > teacherList.get(j + 1).getId()) {
                         Collections.swap(teacherList, j, j + 1);
                     }
@@ -119,8 +136,25 @@ public class TeacherService implements IPersonService {
     }
 
     public static Teacher infoTeacher() {
-        System.out.print("nhập id ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true) {
+            try {
+                System.out.print("Nhập id: ");
+                id = Integer.parseInt(scanner.nextLine());
+
+                for (Teacher teacher : teacherList) {
+                    if (teacher.getId() == id) {
+                        throw new DuplicateIDException("Trùng id, vui lòng nhập lại!");
+                    }
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (DuplicateIDException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
 
         System.out.print("Nhập name: ");
         String name = scanner.nextLine();
