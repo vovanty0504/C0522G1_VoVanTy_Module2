@@ -103,6 +103,7 @@ public class StudentService implements IPersonService {
                 }
             }
         }
+        writeFile();
         display();
     }
 
@@ -129,6 +130,7 @@ public class StudentService implements IPersonService {
                 if (chooseYesNo == 1) {
                     studentList.remove(student);
                     System.out.println("xóa thành công");
+                    writeFile();
                 }
                 isFlag = true;
                 break;
