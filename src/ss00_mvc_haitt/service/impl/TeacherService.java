@@ -1,8 +1,13 @@
 package ss00_mvc_haitt.service.impl;
 
 import ss00_mvc_haitt.exception.DuplicateIDException;
+import ss00_mvc_haitt.modle.Student;
 import ss00_mvc_haitt.service.IPersonService;
 import ss00_mvc_haitt.modle.Teacher;
+import ss00_mvc_haitt.utils.ReadStudentFile;
+import ss00_mvc_haitt.utils.ReadTeacherFile;
+import ss00_mvc_haitt.utils.WriteStudentFile;
+import ss00_mvc_haitt.utils.WriteTeacherFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,26 +17,29 @@ import java.util.Scanner;
 public class TeacherService implements IPersonService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Teacher> teacherList = new ArrayList<>();
+    public static final String PATH_TEACHER = "src/ss00_mvc_haitt/data/teacher.csv";
 
-    static {
-        teacherList.add(new Teacher(1, "Võ Văn Tý", "5/4/2001", "Nam", "Toán"));
-        teacherList.add(new Teacher(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", "toán"));
-        teacherList.add(new Teacher(3, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
-        teacherList.add(new Teacher(7, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
-        teacherList.add(new Teacher(6, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
-        teacherList.add(new Teacher(4, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
-        teacherList.add(new Teacher(5, "Lê Đại Lợi", "5/4/2001", "Nam", "Văn"));
+    public void writeFile() {
+        WriteTeacherFile.writeTeacherFile(PATH_TEACHER, teacherList);
     }
 
+    public void readFile() {
+        List<Teacher> list = ReadTeacherFile.readTeacherFile(PATH_TEACHER);
+        teacherList.clear();
+        teacherList.addAll(list);
+    }
 
     public void add() {
+        readFile();
         Teacher teacher = infoTeacher();
         teacherList.add(teacher);
         System.out.println("thêm mới thành công!");
+        writeFile();
     }
 
 
     public void remove() {
+        readFile();
         int idRemove;
         while (true) {
             try {
@@ -58,6 +66,8 @@ public class TeacherService implements IPersonService {
                 break;
             }
         }
+        writeFile();
+
         if (!isFlag) {
             System.out.println("xóa thành công");
         }
@@ -65,6 +75,7 @@ public class TeacherService implements IPersonService {
 
 
     public void display() {
+        readFile();
         for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
@@ -72,6 +83,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void searchID() {
+        readFile();
         int id;
         while (true) {
             try {
@@ -98,6 +110,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void searchName() {
+        readFile();
         System.out.println("nhập tên tìm kiếm");
         String name = scanner.nextLine();
         boolean isFlag = false;
@@ -115,6 +128,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void sortName() {
+        readFile();
         boolean isSwap = true;
         for (int i = 0; i < teacherList.size() && isSwap; i++) {
             isSwap = false;
@@ -130,6 +144,7 @@ public class TeacherService implements IPersonService {
                 }
             }
         }
+        writeFile();
         display();
 
     }

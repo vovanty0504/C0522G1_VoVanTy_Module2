@@ -3,32 +3,37 @@ package ss00_mvc_haitt.service.impl;
 import ss00_mvc_haitt.exception.DuplicateIDException;
 import ss00_mvc_haitt.modle.Student;
 import ss00_mvc_haitt.service.IPersonService;
+import ss00_mvc_haitt.utils.ReadStudentFile;
+import ss00_mvc_haitt.utils.WriteStudentFile;
 
 import java.util.*;
 
 public class StudentService implements IPersonService {
+    public static final String PATH_STUDENT = "src/ss00_mvc_haitt/data/student.csv";
     private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    static {
-        studentList.add(new Student(1, "Võ Văn Tý", "5/4/2001", "Nam", 10, "Code Gym"));
-        studentList.add(new Student(2, "Đặng Thị Thủy Điên", "1/3/2001", "Nam", 9, "Code Gym"));
-        studentList.add(new Student(3, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
-        studentList.add(new Student(4, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
-        studentList.add(new Student(7, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
-        studentList.add(new Student(6, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
-        studentList.add(new Student(5, "Lê Đại Lợi", "5/4/2001", "Nam", 8, "Code Gym"));
+    public void writeFile() {
+        WriteStudentFile.writeStudentFile(PATH_STUDENT, studentList);
     }
 
+    public void readFile() {
+        List<Student> list = ReadStudentFile.readStudentFile(PATH_STUDENT);
+        studentList.clear();
+        studentList.addAll(list);
+    }
 
     @Override
     public void add() {
+        readFile();
         Student student = infoStudent();
         studentList.add(student);
         System.out.println("thêm mới thành công: ");
+        writeFile();
     }
 
     public void display() {
+        readFile();
         for (Student student : studentList) {
             System.out.println(student);
         }
@@ -36,6 +41,7 @@ public class StudentService implements IPersonService {
 
     @Override
     public void searchID() {
+        readFile();
         int id;
         while (true) {
             try {
@@ -63,6 +69,7 @@ public class StudentService implements IPersonService {
 
     @Override
     public void searchName() {
+        readFile();
         System.out.println("nhập tên tìm theo tên");
         String searchName = scanner.nextLine();
         boolean isFlag = false;
@@ -80,6 +87,7 @@ public class StudentService implements IPersonService {
 
     @Override
     public void sortName() {
+        readFile();
         boolean isSwap = true;
         for (int i = 0; i < studentList.size() && isSwap; i++) {
             isSwap = false;
@@ -100,6 +108,7 @@ public class StudentService implements IPersonService {
 
 
     public void remove() {
+        readFile();
         int idRemove;
         while (true) {
             try {
@@ -129,7 +138,6 @@ public class StudentService implements IPersonService {
             System.out.println("không tìm thấy");
         }
     }
-
 
     public static Student infoStudent() {
         int id;

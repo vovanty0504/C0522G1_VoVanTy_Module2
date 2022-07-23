@@ -60,4 +60,5 @@ public abstract class Person {
     public String toString() {
         return "Id:" + getId() + ", Tên: " + getName() + ", Ngày sinh: " + getDayOfBirth() + ", Giới tính: " + getGender();
     }
+
 }

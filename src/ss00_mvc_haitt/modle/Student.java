@@ -7,8 +7,8 @@ public class Student extends Person {
     public Student() {
     }
 
-    public Student(int id, String name, String dateOfBirth,String gender, double point, String nameSchool ) {
-        super(id, name, dateOfBirth,gender);
+    public Student(int id, String name, String dateOfBirth, String gender, double point, String nameSchool) {
+        super(id, name, dateOfBirth, gender);
         this.point = point;
         this.nameSchool = nameSchool;
     }
@@ -33,5 +33,10 @@ public class Student extends Person {
     @Override
     public String toString() {
         return super.toString() + ", Lớp: " + getNameSchool() + ", Điểm: " + getPoint();
+    }
+
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,", getId(), getNameSchool()
+                , getDateOfBirth(), getGender(), getPoint(), getNameSchool());
     }
 }

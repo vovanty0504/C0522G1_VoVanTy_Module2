@@ -23,4 +23,10 @@ public class Teacher extends Person {
     public String toString() {
         return super.toString() + ", Chuyên môn: " + getTechnique();
     }
+
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,", getId(), getName()
+                , getDateOfBirth(), getGender(), getTechnique());
+    }
+
 }
