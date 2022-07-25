@@ -1,0 +1,49 @@
+package casestudy.execise1.modle;
+
+public class Employee extends Person {
+    private String level;
+    private String position;
+    private double wage;
+
+    public Employee() {
+    }
+
+    public Employee(int id, String name, String dateOfBirth, String gender, int idCard, int phone, String email, String level, String location, double wage) {
+        super(id, name, dateOfBirth, gender, idCard, phone, email);
+        this.level = level;
+        this.position = location;
+        this.wage = wage;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public double getWage() {
+        return wage;
+    }
+
+    public void setWage(double wage) {
+        this.wage = wage;
+    }
+
+    @Override
+    public String toString() {
+        return "Nhân viên-" +super.toString()+
+                ", Trình độ: " + getLevel() +
+                ", Vị trí: " + getPosition()+
+                ", Lương: " + getWage();
+    }
+}

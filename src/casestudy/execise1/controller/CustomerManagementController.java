@@ -1,9 +1,13 @@
 package casestudy.execise1.controller;
 
+import casestudy.execise1.service.ICustomerService;
+import casestudy.execise1.service.impl.CustomerService;
+
 import java.util.Scanner;
 
 public class CustomerManagementController {
     private static final Scanner scanner = new Scanner(System.in);
+    ICustomerService customer = new CustomerService();
 
     public void customerManagement(){
         do {
@@ -15,10 +19,13 @@ public class CustomerManagementController {
            int choose= Integer.parseInt(scanner.nextLine());
            switch (choose){
                case 1:
+                   customer.display();
                    break;
                case 2:
+                   customer.add();
                    break;
                case 3:
+                   customer.edit();
                    break;
                case 4:
                    return;

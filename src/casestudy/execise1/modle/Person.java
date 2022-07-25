@@ -1,40 +1,33 @@
 package casestudy.execise1.modle;
 
 public abstract class  Person {
-    private int employeeCode;
-    private String name;
-    private int dateOfBirth;
-    private String gender;
     private int id;
-    private int numberPhone;
+    private String name;
+    private String dateOfBirth;
+    private String gender;
+    private int idCard;
+    private int phone;
     private String email;
-    private int Level;
-    private String location;
-    private double wage;
 
-    public Person(){
+    public Person() {
     }
 
-    public Person(int employeeCode, String name, int dateOfBirth, String gender, int id,
-                  int numberPhone, String email, int level, String location, double wage) {
-        this.employeeCode = employeeCode;
+    public Person(int id, String name, String dateOfBirth, String gender, int idCard, int phone, String email) {
+        this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.id = id;
-        this.numberPhone = numberPhone;
+        this.idCard = idCard;
+        this.phone = phone;
         this.email = email;
-        Level = level;
-        this.location = location;
-        this.wage = wage;
     }
 
-    public int getEmployeeCode() {
-        return employeeCode;
+    public int getId() {
+        return id;
     }
 
-    public void setEmployeeCode(int employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -45,11 +38,11 @@ public abstract class  Person {
         this.name = name;
     }
 
-    public int getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(int dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -61,20 +54,20 @@ public abstract class  Person {
         this.gender = gender;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCard() {
+        return idCard;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
     }
 
-    public int getNumberPhone() {
-        return numberPhone;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setNumberPhone(int numberPhone) {
-        this.numberPhone = numberPhone;
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -85,27 +78,16 @@ public abstract class  Person {
         this.email = email;
     }
 
-    public int getLevel() {
-        return Level;
+    @Override
+    public String toString() {
+        return "Mã số: " + getId() +
+                ", Tên: " + getName() +
+                ", Ngày sinh: " + getDateOfBirth() +
+                ", Giới tính: " + getGender() +
+                ", Số CMND: " + getIdCard() +
+                ", Số điện thoại: " + getPhone() +
+                ", Email: " + getEmail();
     }
 
-    public void setLevel(int level) {
-        Level = level;
-    }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public double getWage() {
-        return wage;
-    }
-
-    public void setWage(double wage) {
-        this.wage = wage;
-    }
 }
