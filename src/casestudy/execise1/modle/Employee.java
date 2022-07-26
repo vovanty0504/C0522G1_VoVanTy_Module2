@@ -15,6 +15,7 @@ public class Employee extends Person {
         this.wage = wage;
     }
 
+
     public String getLevel() {
         return level;
     }
@@ -37,6 +38,20 @@ public class Employee extends Person {
 
     public void setWage(double wage) {
         this.wage = wage;
+    }
+
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+                this.getId(),
+                this.getName(),
+                this.getDateOfBirth(),
+                this.getGender(),
+                this.getIdCard(),
+                this.getPhone(),
+                this.getEmail(),
+                this.getLevel(),
+                this.getPosition(),
+                this.getWage());
     }
 
     @Override

@@ -4,18 +4,25 @@ import java.util.Scanner;
 
 public class BookingManagementController {
     private static final Scanner scanner = new Scanner(System.in);
-
-    public void bookingManagement(){
+    int choose;
+    public void bookingManagement() {
         do {
-            System.out.println("1. thêm đặt chỗ mới\n" +
-                    "2. đặt trước danh sách hiển thị\n" +
-                    "3. tạo các co thắt mới\n" +
-                    "4. hiển thị danh sách hợp đồng\n" +
-                    "5. chỉnh sửa hợp đồng\n" +
-                    "6. Quay lại menu chính");
-            System.out.println("mời bạn nhập lựa chọn");
-            int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose){
+            while (true) {
+                try {
+                    System.out.println("1. thêm đặt chỗ mới\n" +
+                            "2. đặt trước danh sách hiển thị\n" +
+                            "3. tạo các co thắt mới\n" +
+                            "4. hiển thị danh sách hợp đồng\n" +
+                            "5. chỉnh sửa hợp đồng\n" +
+                            "6. Quay lại menu chính");
+                    System.out.println("mời bạn nhập lựa chọn");
+                    choose = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("vui lòng nhập số!");
+                }
+            }
+            switch (choose) {
                 case 1:
                     break;
                 case 2:
@@ -32,6 +39,6 @@ public class BookingManagementController {
                     System.out.println("vui lòng nhập lại");
             }
 
-        }while (true);
+        } while (true);
     }
 }

@@ -58,6 +58,8 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
+
+
     @Override
     public String toString() {
         return "Tên dịch vụ " + getServiceName() +

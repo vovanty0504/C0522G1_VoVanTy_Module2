@@ -1,10 +1,7 @@
 package casestudy.execise1.service.impl;
 
-import casestudy.execise1.modle.Employee;
-import casestudy.execise1.modle.Facility;
 import casestudy.execise1.modle.Villa;
 import casestudy.execise1.service.IVillaService;
-import ss00_mvc_haitt.exception.DuplicateIDException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,17 +9,11 @@ import java.util.Scanner;
 
 public class VillaService implements IVillaService {
     private static Scanner scanner = new Scanner(System.in);
-    private static Map<Facility, Integer> villaMap = new LinkedHashMap<>();
-
-
+    private static Map<Villa, Integer> villaMap = new LinkedHashMap<>();
 
 
     @Override
     public void add() {
-        System.out.print("vui lòng nhập key:");
-
-
-        System.out.println("thêm mới thành công: ");
 
 
     }

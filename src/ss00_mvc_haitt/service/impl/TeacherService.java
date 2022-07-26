@@ -1,12 +1,11 @@
 package ss00_mvc_haitt.service.impl;
 
 import ss00_mvc_haitt.exception.DuplicateIDException;
-import ss00_mvc_haitt.modle.Student;
-import ss00_mvc_haitt.service.IPersonService;
 import ss00_mvc_haitt.modle.Teacher;
-import ss00_mvc_haitt.utils.ReadStudentFile;
+import ss00_mvc_haitt.service.IPersonService;
+import ss00_mvc_haitt.utils.Name;
 import ss00_mvc_haitt.utils.ReadTeacherFile;
-import ss00_mvc_haitt.utils.WriteStudentFile;
+import ss00_mvc_haitt.utils.RegexBirth;
 import ss00_mvc_haitt.utils.WriteTeacherFile;
 
 import java.util.ArrayList;
@@ -171,11 +170,18 @@ public class TeacherService implements IPersonService {
 
 
         System.out.print("Nhập name: ");
-        String name = scanner.nextLine();
+        String name = Name.name();
 
-        System.out.print("Nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
-
+        String dateOfBirth;
+        while (true) {
+            System.out.print("Nhập ngày sinh: ");
+            dateOfBirth = scanner.nextLine();
+            if (dateOfBirth.matches(RegexBirth.regexBirth)) {
+                break;
+            } else {
+                System.out.println("vui lòng nhập dd-MM-YYYY");
+            }
+        }
 
         System.out.print("nhập giới tính: ");
         String gender = scanner.nextLine();
@@ -183,8 +189,7 @@ public class TeacherService implements IPersonService {
         System.out.println("Nhập chuyên môn: ");
         String technique = scanner.nextLine();
 
-        Teacher teacher = new Teacher(id, name, dateOfBirth, gender, technique);
-        return teacher;
+        return new Teacher(id, name, dateOfBirth, gender, technique);
 
     }
 }

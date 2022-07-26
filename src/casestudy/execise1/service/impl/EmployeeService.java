@@ -2,29 +2,20 @@ package casestudy.execise1.service.impl;
 
 import casestudy.execise1.modle.Employee;
 import casestudy.execise1.service.IEmployeeService;
+import casestudy.execise1.utils.FileEmployee;
 import ss00_mvc_haitt.exception.DuplicateIDException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Employee> employeeList = new ArrayList<>();
-
-    static {
-        employeeList.add(new Employee(1, "Vo Van Ty", "05/04/2001", "nam", 12345, 9999, "VanTy", "Đại học", "sếp", 100));
-        employeeList.add(new Employee(2, "Le Dai Loi", "1/1/1997", "nam", 123456, 8888, "DaiLoi", "Đại học", "Quản lí", 50));
-        employeeList.add(new Employee(3, "Huynh Trung Thuyen", "20/04/1993", "nam", 1234567, 7777, "TrungThuyen", "Đại học", "Quản lí", 50));
-        employeeList.add(new Employee(4, "Thuy Tien", "05/04/2001", "nu", 12345678, 6666, "ThuyTien", "Đại học", "Nhân viên", 20));
-    }
-
+    private static final String PATH = "src/casestudy/execise1/data/employee.csv";
 
     @Override
     public void edit() {
-
+        List<Employee> employeeList = FileEmployee.readEmployeeFile(PATH);
         int idCard;
-
         boolean isExit = false;
         while (true) {
             try {
@@ -38,7 +29,6 @@ public class EmployeeService implements IEmployeeService {
         for (Employee employee : employeeList) {
             if (employee.getIdCard() == idCard) {
                 System.out.println("vui lòng nhập lại để cập nhập thông tin!");
-
 
                 System.out.print("Nhập họ và tên: ");
                 employee.setName(scanner.nextLine());
@@ -66,7 +56,6 @@ public class EmployeeService implements IEmployeeService {
                     } catch (DuplicateIDException e) {
                         System.out.println(e.getMessage());
                     }
-
                 }
                 employee.setIdCard(idCard1);
 
@@ -121,6 +110,7 @@ public class EmployeeService implements IEmployeeService {
                     }
                 }
                 isExit = true;
+                FileEmployee.writeEmployeeFile(PATH, employeeList);
                 System.out.println("cập nhập thành công!");
                 break;
             }
@@ -132,24 +122,25 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
+        List<Employee> employeeList = FileEmployee.readEmployeeFile(PATH);
         Employee employee = infoEmployee();
         employeeList.add(employee);
         System.out.println("thêm mới thành công! ");
+        FileEmployee.writeEmployeeFile(PATH, employeeList);
     }
 
     public void display() {
+        List<Employee> employeeList = FileEmployee.readEmployeeFile(PATH);
+        for (Employee employee1 : employeeList)
+            System.out.println(employee1);
 
-        for (Employee employee : employeeList) {
-            System.out.println(employee);
-        }
     }
 
     public static Employee infoEmployee() {
+        List<Employee> employeeList = FileEmployee.readEmployeeFile(PATH);
         int id;
         while (true) {
             try {
-
-
                 System.out.print("nhập mã số:");
                 id = Integer.parseInt(scanner.nextLine());
 

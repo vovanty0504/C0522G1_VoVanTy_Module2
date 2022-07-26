@@ -1,8 +1,6 @@
 package ss00_mvc_haitt.utils;
 
-
 import ss00_mvc_haitt.modle.Student;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -37,7 +35,8 @@ public class ReadStudentFile {
         String[] info;
         for (String line : stringList) {
             info = line.split(",");
-            studentList.add(new Student(Integer.parseInt(info[0]), info[1], info[2], info[3], Double.parseDouble(info[4]), info[5]));
+            studentList.add(new Student(Integer.parseInt(info[0]), info[1], info[2],
+                    info[3], Double.parseDouble(info[4]), info[5]));
         }
 
         return studentList;

@@ -14,43 +14,28 @@ public class FacilityManagementController {
     IHouseService house = new HouseService();
     IRoomService room = new RoomService();
     IVillaService villa = new VillaService();
+    int choose;
 
     public void FacilityManagement() {
         do {
-            System.out.println("1. Cơ sở danh sách hiển thị\n" +
-                    "2. Thêm cơ sở mới\n" +
-                    "3. Hiển thị danh sách bảo trì cơ sở\n" +
-                    "4. Quay lại menu chính");
-            System.out.println("mời bạn nhập lựa chon:");
-            int choose = Integer.parseInt(scanner.nextLine());
-
+            while (true) {
+                try {
+                    System.out.println("1. Cơ sở danh sách hiển thị\n" +
+                            "2. Thêm cơ sở mới\n" +
+                            "3. Hiển thị danh sách bảo trì cơ sở\n" +
+                            "4. Quay lại menu chính");
+                    System.out.println("mời bạn nhập lựa chon:");
+                    choose = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("vui lòng nhập số!");
+                }
+            }
             switch (choose) {
                 case 1:
-                    villa.display();
                     break;
                 case 2:
-                    System.out.print("1. Thêm Villa\n" +
-                                      "2. Thêm Room\n" +
-                                      "3. Thêm House\n"+
-                                       "4. Quay lại");
-
-                    int select = Integer.parseInt(scanner.nextLine());
-                    switch (select){
-                        case 1:
-                            villa.add();
-                            break;
-                        case 2:
-                            room.add();
-                            break;
-                        case 3:
-                            house.add();
-                            break;
-                        case 4:
-                            return;
-                        default:
-                            System.out.println("Bạn đã nhập sai vui lòng nhập lại");
-                    }
-
+                    facilityMenu();
                     break;
                 case 3:
                     break;
@@ -61,5 +46,40 @@ public class FacilityManagementController {
             }
 
         } while (true);
+    }
+
+    public void facilityMenu() {
+        Scanner scanner = new Scanner(System.in);
+        int choose;
+        do {
+            while (true) {
+                try {
+                    System.out.println("1. Thêm Villa\n" +
+                            "2. Thêm house\n" +
+                            "3. Thêm Room\n" +
+                            "4. Trở lại!");
+                    System.out.print("vui lòng nhập lựa chọn: ");
+                    choose = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("vui lòng nhập số");
+                }
+            }
+
+            switch (choose) {
+                case 1:
+                    villa.add();
+                    break;
+                case 2:
+                    house.add();
+                    break;
+                case 3:
+                    room.add();
+                    break;
+                case 4:
+                    return;
+            }
+        } while (true);
+
     }
 }

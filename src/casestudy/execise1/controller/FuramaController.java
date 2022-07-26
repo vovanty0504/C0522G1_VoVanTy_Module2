@@ -10,16 +10,25 @@ public class FuramaController {
         FacilityManagementController facility = new FacilityManagementController();
         BookingManagementController booking = new BookingManagementController();
         PromotionManagementController promotion = new PromotionManagementController();
+        int choose;
         do {
-            System.out.println("Menu quản lí khách sạn \n" +
-                    "1. quản lý nhân viên\n" +
-                    "2. quản lý khách hàng\n" +
-                    "3. quản lý cơ sở\n" +
-                    "4. quản lý đặt phòng\n" +
-                    "5. quản lý khuyến mãi\n" +
-                    "6. thoát ra");
-            System.out.println("mời bạn nhập lựa chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            while (true) {
+                try {
+                    System.out.println("Menu quản lí khách sạn \n" +
+                            "1. quản lý nhân viên\n" +
+                            "2. quản lý khách hàng\n" +
+                            "3. quản lý cơ sở\n" +
+                            "4. quản lý đặt phòng\n" +
+                            "5. quản lý khuyến mãi\n" +
+                            "6. thoát ra");
+                    System.out.println("mời bạn nhập lựa chọn: ");
+                    choose = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("vui lòng nhập số!");
+                }
+            }
+
             switch (choose) {
                 case 1:
                     employee.employeeManager();
@@ -39,7 +48,6 @@ public class FuramaController {
                 case 6:
                     System.out.println("tạm biệt quý khách!");
                     System.exit(0);
-
                     break;
                 default:
                     System.out.println("vui lòng nhập lại");
