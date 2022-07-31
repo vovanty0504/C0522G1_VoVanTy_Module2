@@ -3,12 +3,11 @@ package casestudy.execise1.utils;
 import casestudy.execise1.modle.Customer;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class FileCustomer {
-    private static List<String> reaFile(String path) {
-        List<String> stringList = new ArrayList<>();
+    private static LinkedList<String> reaFile(String path) {
+        LinkedList<String> stringList = new LinkedList<>();
         String line;
         try {
             File file = new File(path);
@@ -24,9 +23,9 @@ public class FileCustomer {
         return stringList;
     }
 
-    public static List<Customer> readCustomerFile(String path) {
-        List<String> stringList = reaFile(path);
-        List<Customer> customerList = new ArrayList<>();
+    public static LinkedList<Customer> readCustomerFile(String path) {
+        LinkedList<String> stringList = reaFile(path);
+        LinkedList<Customer> customerList = new LinkedList<>();
         String[] info;
         for (String line : stringList) {
             info = line.split(",");
@@ -36,8 +35,8 @@ public class FileCustomer {
                         info[1],
                         info[2],
                         info[3],
-        Integer.parseInt(info[4]),
-        Integer.parseInt(info[5]),
+                        Integer.parseInt(info[4]),
+                        (info[5]),
                         info[6],
                         info[7],
                         info[8]));
@@ -45,7 +44,8 @@ public class FileCustomer {
         }
         return customerList;
     }
-    private static void writeFile(String path, String date){
+
+    private static void writeFile(String path, String date) {
         try {
             File file = new File(path);
             FileWriter fileWriter = new FileWriter(file);
@@ -57,11 +57,11 @@ public class FileCustomer {
         }
     }
 
-    public static void writeCustomerFile(String path, List<Customer> customers){
+    public static void writeCustomerFile(String path, LinkedList<Customer> customers) {
         StringBuilder data = new StringBuilder();
-        for (Customer customer : customers){
+        for (Customer customer : customers) {
             data.append(customer.getInfo());
         }
-        writeFile(path,data.toString());
+        writeFile(path, data.toString());
     }
 }

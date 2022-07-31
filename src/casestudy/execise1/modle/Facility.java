@@ -1,21 +1,32 @@
 package casestudy.execise1.modle;
 
 public abstract class Facility {
+    private String idService;
     private String serviceName;
     private double area;
     private double rentalCosts;
-    private int numberOfPeopleIn;
+    private int maxNumberOfPeople;
     private String rentalType;
 
-    public  Facility(){
+
+    public Facility() {
     }
 
-    public Facility(String serviceName, double area, double rentalCosts, int numberOfPeopleIn, String rentalType) {
+    public Facility(String idService, String serviceName, double area, double rentalCosts, int maxNumberOfPeople, String rentalType) {
+        this.idService = idService;
         this.serviceName = serviceName;
         this.area = area;
         this.rentalCosts = rentalCosts;
-        this.numberOfPeopleIn = numberOfPeopleIn;
+        this.maxNumberOfPeople = maxNumberOfPeople;
         this.rentalType = rentalType;
+    }
+
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
     }
 
     public String getServiceName() {
@@ -42,12 +53,12 @@ public abstract class Facility {
         this.rentalCosts = rentalCosts;
     }
 
-    public int getNumberOfPeopleIn() {
-        return numberOfPeopleIn;
+    public int getMaxNumberOfPeople() {
+        return maxNumberOfPeople;
     }
 
-    public void setNumberOfPeopleIn(int numberOfPeopleIn) {
-        this.numberOfPeopleIn = numberOfPeopleIn;
+    public void setMaxNumberOfPeople(int maxNumberOfPeople) {
+        this.maxNumberOfPeople = maxNumberOfPeople;
     }
 
     public String getRentalType() {
@@ -60,12 +71,14 @@ public abstract class Facility {
 
 
 
+
     @Override
     public String toString() {
-        return "Tên dịch vụ " + getServiceName() +
+        return "Mã dịch vụ " + getServiceName() +
+                ", Tên dịch vụ " + getServiceName() +
                 ", Diện tích sử dụng " + getArea() +
                 ", Chi phí thuê " + getRentalCosts() +
-                ", Số lượng người tối đa " + getNumberOfPeopleIn()+
+                ", Số lượng người tối đa " + getMaxNumberOfPeople() +
                 ", Kiểu thuê " + getRentalType();
     }
 }

@@ -5,7 +5,7 @@ public class Teacher extends Person {
     public Teacher() {
     }
 
-    public Teacher(int id, String name, String dayOfBirth, int gender, String technique) {
+    public Teacher(int id, String name, String dayOfBirth, String gender, String technique) {
         super(id, name, dayOfBirth, gender);
         this.technique = technique;
     }

@@ -5,12 +5,12 @@ public abstract class Person {
     private int id;
     private String name;
     private String dayOfBirth;
-    private int gender;
+    private String gender;
 
     public Person() {
     }
 
-    public Person(int id, String name, String dayOfBirth, int gender) {
+    public Person(int id, String name, String dayOfBirth, String gender) {
         this.id = id;
         this.name = name;
         this.dayOfBirth = dayOfBirth;
@@ -41,18 +41,11 @@ public abstract class Person {
         this.dayOfBirth = dayOfBirth;
     }
 
-    public boolean isMale() {
-        return this.gender == 1;
-    }
-
     public String getGender() {
-        if (isMale()) {
-            return "Nam";
-        }
-        return "Nữ";
+        return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

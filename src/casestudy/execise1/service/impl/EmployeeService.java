@@ -3,13 +3,14 @@ package casestudy.execise1.service.impl;
 import casestudy.execise1.modle.Employee;
 import casestudy.execise1.service.IEmployeeService;
 import casestudy.execise1.utils.FileEmployee;
+import casestudy.execise1.utils.MenuUtils;
 import ss00_mvc_haitt.exception.DuplicateIDException;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     private static final String PATH = "src/casestudy/execise1/data/employee.csv";
 
     @Override
@@ -20,7 +21,7 @@ public class EmployeeService implements IEmployeeService {
         while (true) {
             try {
                 System.out.print("Số chứng minh nhân dân: ");
-                idCard = Integer.parseInt(scanner.nextLine());
+                idCard = Integer.parseInt(SCANNER.nextLine());
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số!");
@@ -31,19 +32,19 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println("vui lòng nhập lại để cập nhập thông tin!");
 
                 System.out.print("Nhập họ và tên: ");
-                employee.setName(scanner.nextLine());
+                employee.setName(SCANNER.nextLine());
 
                 System.out.print("nhập ngày sinh: ");
-                employee.setDateOfBirth(scanner.nextLine());
+                employee.setDateOfBirth(SCANNER.nextLine());
 
                 System.out.print("nhập giới tính: ");
-                employee.setGender(scanner.nextLine());
+                employee.setGender(SCANNER.nextLine());
 
                 int idCard1;
                 while (true) {
                     try {
                         System.out.print("nhập chứng minh nhân dân: ");
-                        idCard1 = Integer.parseInt(scanner.nextLine());
+                        idCard1 = Integer.parseInt(SCANNER.nextLine());
 
                         for (Employee employee1 : employeeList) {
                             if (employee1.getIdCard() == idCard1) {
@@ -59,29 +60,15 @@ public class EmployeeService implements IEmployeeService {
                 }
                 employee.setIdCard(idCard1);
 
-                int phone;
-                while (true) {
-                    try {
-                        System.out.print("nhập số điện thoại: ");
-                        phone = Integer.parseInt(scanner.nextLine());
-                        for (Employee employee1 : employeeList) {
-                            if (employee1.getPhone() == phone) {
-                                throw new DuplicateIDException("Trùng số điện thoại, vui lòng nhập ID lại!");
-                            }
-                        }
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Vui lòng nhập số!");
-                    } catch (DuplicateIDException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+                System.out.print("nhập số điện thoại: ");
+                employee.setPhone(SCANNER.nextLine());
+
 
                 String email;
                 while (true) {
                     try {
                         System.out.print("vui lòng nhập email: ");
-                        email = scanner.nextLine();
+                        email = SCANNER.nextLine();
                         for (Employee employee1 : employeeList) {
                             if (employee1.getEmail().equals(email)) {
                                 throw new DuplicateIDException("Trùng email, vui lòng nhập ID lại!");
@@ -95,15 +82,15 @@ public class EmployeeService implements IEmployeeService {
                 employee.setEmail(email);
 
                 System.out.print("trình độ học vấn: ");
-                employee.setLevel(scanner.nextLine());
+                employee.setLevel(SCANNER.nextLine());
 
                 System.out.print("vị trí: ");
-                employee.setPosition(scanner.nextLine());
+                employee.setPosition(SCANNER.nextLine());
 
                 while (true) {
                     try {
                         System.out.print("nhập lương: ");
-                        employee.setWage(Double.parseDouble(scanner.nextLine()));
+                        employee.setWage(Double.parseDouble(SCANNER.nextLine()));
                         break;
                     } catch (NumberFormatException e) {
                         System.out.println("bạn đã nhập sai! Vui lòng nhập số! ");
@@ -142,7 +129,7 @@ public class EmployeeService implements IEmployeeService {
         while (true) {
             try {
                 System.out.print("nhập mã số:");
-                id = Integer.parseInt(scanner.nextLine());
+                id = Integer.parseInt(SCANNER.nextLine());
 
                 for (Employee employee : employeeList) {
                     if (employee.getId() == id) {
@@ -158,19 +145,19 @@ public class EmployeeService implements IEmployeeService {
             }
         }
         System.out.print("Nhập họ và tên: ");
-        String name = scanner.nextLine();
+        String name = SCANNER.nextLine();
 
         System.out.print("nhập ngày sinh");
-        String dateOfBirth = scanner.nextLine();
+        String dateOfBirth = SCANNER.nextLine();
 
         System.out.print("nhập giới tính ");
-        String gender = scanner.nextLine();
+        String gender = SCANNER.nextLine();
 
         int idCard;
         while (true) {
             try {
                 System.out.print("nhập chứng minh nhân dân");
-                idCard = Integer.parseInt(scanner.nextLine());
+                idCard = Integer.parseInt(SCANNER.nextLine());
                 for (Employee employee : employeeList) {
                     if (employee.getIdCard() == idCard) {
                         throw new DuplicateIDException("Trùng CMND, vui lòng nhập ID lại!");
@@ -184,29 +171,15 @@ public class EmployeeService implements IEmployeeService {
             }
         }
 
-        int phone;
-        while (true) {
-            try {
-                System.out.print("nhập số điện thoại");
-                phone = Integer.parseInt(scanner.nextLine());
-                for (Employee employee : employeeList) {
-                    if (employee.getPhone() == phone) {
-                        throw new DuplicateIDException("Trùng Số điện thoại, vui lòng nhập ID lại!");
-                    }
-                }
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số!");
-            } catch (DuplicateIDException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        String email;
 
+        System.out.print("nhập số điện thoại");
+        String phone = SCANNER.nextLine();
+
+        String email;
         while (true) {
             try {
                 System.out.print("vui lòng nhập email: ");
-                email = scanner.nextLine();
+                email = SCANNER.nextLine();
                 for (Employee employee : employeeList) {
                     if (employee.getEmail().equals(email)) {
                         throw new DuplicateIDException("Trùng email, vui lòng nhập ID lại!");
@@ -218,17 +191,17 @@ public class EmployeeService implements IEmployeeService {
             }
         }
 
-        System.out.print("trình độ học vấn");
-        String level = scanner.nextLine();
 
-        System.out.print("vị trí");
-        String position = scanner.nextLine();
+        String level = MenuUtils.lever();
+
+
+        String position = MenuUtils.location();
 
         double wage;
         while (true) {
             try {
                 System.out.print("nhập lương: ");
-                wage = Double.parseDouble(scanner.nextLine());
+                wage = Double.parseDouble(SCANNER.nextLine());
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("bạn đã nhập sai! Vui lòng nhập số! ");

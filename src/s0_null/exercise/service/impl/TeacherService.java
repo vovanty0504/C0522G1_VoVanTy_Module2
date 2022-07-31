@@ -64,7 +64,7 @@ public class TeacherService implements ITeacherService {
         String dateOfBirth = scanner.nextLine();
 
         System.out.print("Nhập giới tính (nhập số 1 nếu là Nam): ");
-        int gender = Integer.parseInt(scanner.nextLine());
+        String gender = scanner.nextLine();
 
         System.out.print("Nhập chuyên môn: ");
         String technique = scanner.nextLine();

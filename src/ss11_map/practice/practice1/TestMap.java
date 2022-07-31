@@ -1,8 +1,5 @@
 package ss11_map.practice.practice1;
 
-import casestudy.execise1.service.IHouseService;
-
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 

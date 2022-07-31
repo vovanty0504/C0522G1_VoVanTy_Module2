@@ -3,16 +3,19 @@ package casestudy.execise1.service.impl;
 import casestudy.execise1.modle.Customer;
 import casestudy.execise1.service.ICustomerService;
 import casestudy.execise1.utils.FileCustomer;
+import casestudy.execise1.utils.MenuUtils;
 import ss00_mvc_haitt.exception.DuplicateIDException;
-import java.util.List;
+
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
-    private static Scanner scanner = new Scanner(System.in);
-    private static final String PATH="src/casestudy/execise1/data/customer.csv";
+    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String PATH = "src/casestudy/execise1/data/customer.csv";
+
 
     public void display() {
-       List<Customer> customerList = FileCustomer.readCustomerFile(PATH);
+        LinkedList<Customer> customerList = FileCustomer.readCustomerFile(PATH);
         for (Customer customer : customerList) {
             System.out.println(customer);
         }
@@ -20,13 +23,13 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void edit() {
-        List<Customer> customerList = FileCustomer.readCustomerFile(PATH);
+        LinkedList<Customer> customerList = FileCustomer.readCustomerFile(PATH);
         int id;
         boolean isExit = false;
         while (true) {
             try {
                 System.out.print("Nhập mã số:");
-                id = Integer.parseInt(scanner.nextLine());
+                id = Integer.parseInt(SCANNER.nextLine());
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số!");
@@ -37,19 +40,19 @@ public class CustomerService implements ICustomerService {
                 System.out.println("vui lòng nhập lại thông tin!");
 
                 System.out.print("Nhập họ và tên: ");
-                customer.setName(scanner.nextLine());
+                customer.setName(SCANNER.nextLine());
 
                 System.out.print("nhập ngày sinh");
-                customer.setDateOfBirth(scanner.nextLine());
+                customer.setDateOfBirth(SCANNER.nextLine());
 
                 System.out.print("nhập giới tính ");
-                customer.setGender(scanner.nextLine());
+                customer.setGender(SCANNER.nextLine());
 
                 int idCard;
                 while (true) {
                     try {
                         System.out.print("nhập chứng minh nhân dân");
-                        idCard = Integer.parseInt(scanner.nextLine());
+                        idCard = Integer.parseInt(SCANNER.nextLine());
                         for (Customer customer1 : customerList) {
                             if (customer1.getIdCard() == idCard) {
                                 throw new DuplicateIDException("Trùng CMND, vui lòng nhập ID lại!");
@@ -64,31 +67,16 @@ public class CustomerService implements ICustomerService {
                 }
                 customer.setIdCard(idCard);
 
-                int phone;
-                while (true) {
-                    try {
 
-                        System.out.print("nhập số điện thoại");
-                        phone = Integer.parseInt(scanner.nextLine());
-                        for (Customer customer1 : customerList) {
-                            if (customer1.getPhone() == phone) {
-                                throw new DuplicateIDException("Trùng Số điện thoại, vui lòng nhập ID lại!");
-                            }
-                        }
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Vui lòng nhập số!");
-                    } catch (DuplicateIDException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-                customer.setPhone(phone);
+                System.out.print("nhập số điện thoại");
+                customer.setPhone(SCANNER.nextLine());
+
 
                 String email;
                 while (true) {
                     try {
                         System.out.print("vui lòng nhập email: ");
-                        email = scanner.nextLine();
+                        email = SCANNER.nextLine();
                         for (Customer customer1 : customerList) {
                             if (customer1.getEmail().equals(email)) {
                                 throw new DuplicateIDException("Trùng email, vui lòng nhập ID lại!");
@@ -102,13 +90,13 @@ public class CustomerService implements ICustomerService {
                 customer.setEmail(email);
 
                 System.out.print("Loại khách hàng:");
-                customer.setCustomerType(scanner.nextLine());
+                customer.setCustomerType(SCANNER.nextLine());
 
                 System.out.print("địa chỉ:");
-                customer.setAddress(scanner.nextLine());
+                customer.setAddress(SCANNER.nextLine());
 
                 isExit = true;
-                FileCustomer.writeCustomerFile(PATH,customerList);
+                FileCustomer.writeCustomerFile(PATH, customerList);
                 System.out.println("cập nhập thành công!");
                 break;
             }
@@ -120,21 +108,21 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void add() {
-        List<Customer> customerList = FileCustomer.readCustomerFile(PATH);
+        LinkedList<Customer> customerList = FileCustomer.readCustomerFile(PATH);
         Customer customer = infoCustomer();
         customerList.add(customer);
-        FileCustomer.writeCustomerFile(PATH,customerList);
+        FileCustomer.writeCustomerFile(PATH, customerList);
         System.out.println("thêm mới thành công: ");
     }
 
     public static Customer infoCustomer() {
-        List<Customer> customerList = FileCustomer.readCustomerFile(PATH);
+        LinkedList<Customer> customerList = FileCustomer.readCustomerFile(PATH);
 
         int id;
         while (true) {
             try {
                 System.out.print("nhập mã số:");
-                id = Integer.parseInt(scanner.nextLine());
+                id = Integer.parseInt(SCANNER.nextLine());
                 for (Customer customer : customerList) {
                     if (customer.getId() == id) {
                         throw new DuplicateIDException("Trùng ID, vui lòng nhập ID lại!");
@@ -149,19 +137,19 @@ public class CustomerService implements ICustomerService {
             }
         }
         System.out.print("Nhập họ và tên: ");
-        String name = scanner.nextLine();
+        String name = SCANNER.nextLine();
 
         System.out.print("nhập ngày sinh");
-        String dateOfBirth = scanner.nextLine();
+        String dateOfBirth = SCANNER.nextLine();
 
         System.out.print("nhập giới tính ");
-        String gender = scanner.nextLine();
+        String gender = SCANNER.nextLine();
 
         int idCard;
         while (true) {
             try {
                 System.out.print("nhập chứng minh nhân dân");
-                idCard = Integer.parseInt(scanner.nextLine());
+                idCard = Integer.parseInt(SCANNER.nextLine());
                 for (Customer customer : customerList) {
                     if (customer.getIdCard() == idCard) {
                         throw new DuplicateIDException("Trùng CMND, vui lòng nhập ID lại!");
@@ -175,31 +163,31 @@ public class CustomerService implements ICustomerService {
             }
         }
 
-        int phone;
+
+        System.out.print("nhập số điện thoại");
+        String phone = SCANNER.nextLine();
+
+        String email;
         while (true) {
             try {
-                System.out.print("nhập số điện thoại");
-                phone = Integer.parseInt(scanner.nextLine());
+                System.out.print("vui lòng nhập email: ");
+                email = SCANNER.nextLine();
                 for (Customer customer : customerList) {
-                    if (customer.getPhone() == phone) {
-                        throw new DuplicateIDException("Trùng Số điện thoại, vui lòng nhập ID lại!");
+                    if (customer.getEmail().equals(email)) {
+                        throw new DuplicateIDException("Trùng email, vui lòng nhập email lại!");
                     }
                 }
                 break;
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số!");
             } catch (DuplicateIDException e) {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.print("vui lòng nhập email: ");
-        String email = scanner.nextLine();
 
-        System.out.print("Loại khách hàng:");
-        String customerType = scanner.nextLine();
+        String customerType = MenuUtils.customer();
+
 
         System.out.print("địa chỉ:");
-        String address = scanner.nextLine();
+        String address = SCANNER.nextLine();
         return new Customer(id, name, dateOfBirth, gender, idCard, phone, email, customerType, address);
     }
 }

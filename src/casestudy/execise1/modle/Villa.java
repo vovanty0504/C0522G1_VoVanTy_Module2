@@ -1,32 +1,27 @@
 package casestudy.execise1.modle;
 
-public class Villa extends  Facility{
-    private String standardRoom;
+public class Villa extends Facility {
+    private String roomStandardVilla;
     private double poolArea;
     private int numberOfFloors;
 
-    public Villa(){
+    public Villa() {
     }
 
-    public Villa(String standardRoom, double poolArea, int numberOfFloors) {
-        this.standardRoom = standardRoom;
+    public Villa(String idService, String serviceName, double area, double rentalCosts, int numberOfPeopleIn,
+                 String rentalType, String standardRoom, double poolArea, int numberOfFloors) {
+        super(idService, serviceName, area, rentalCosts, numberOfPeopleIn, rentalType);
+        this.roomStandardVilla = standardRoom;
         this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
     }
 
-    public Villa(String serviceName, double area, double rentalCosts, int numberOfPeopleIn, String rentalType, String standardRoom, double poolArea, int numberOfFloors) {
-        super(serviceName, area, rentalCosts, numberOfPeopleIn, rentalType);
-        this.standardRoom = standardRoom;
-        this.poolArea = poolArea;
-        this.numberOfFloors = numberOfFloors;
+    public String getRoomStandardVilla() {
+        return roomStandardVilla;
     }
 
-    public String getStandardRoom() {
-        return standardRoom;
-    }
-
-    public void setStandardRoom(String standardRoom) {
-        this.standardRoom = standardRoom;
+    public void setRoomStandardVilla(String roomStandardVilla) {
+        this.roomStandardVilla = roomStandardVilla;
     }
 
     public double getPoolArea() {
@@ -45,11 +40,24 @@ public class Villa extends  Facility{
         this.numberOfFloors = numberOfFloors;
     }
 
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                this.getIdService(),
+                this.getServiceName(),
+                this.getArea(),
+                this.getRentalCosts(),
+                this.getMaxNumberOfPeople(),
+                this.getRentalType(),
+                this.getRoomStandardVilla(),
+                this.getPoolArea(),
+                this.getNumberOfFloors());
+    }
+
     @Override
     public String toString() {
         return super.toString() +
-                ", Tiêu chuẩn phòng " +getStandardRoom() +
-                ", Diện tích hồ bơi " +getPoolArea() +
+                ", Tiêu chuẩn phòng " + getRoomStandardVilla() +
+                ", Diện tích hồ bơi " + getPoolArea() +
                 ", Số tầng " + getNumberOfFloors()
                 ;
     }

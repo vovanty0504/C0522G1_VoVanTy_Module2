@@ -1,6 +1,5 @@
 package casestudy.execise1.controller;
 
-import casestudy.execise1.modle.Employee;
 import casestudy.execise1.service.IEmployeeService;
 import casestudy.execise1.service.impl.EmployeeService;
 

@@ -4,12 +4,11 @@ public class House extends Facility {
     private String roomStandard;
     private int numberOfFloors;
 
-    public House(){
+    public House() {
     }
 
-
-    public House(String serviceName, double area, double rentalCosts, int numberOfPeopleIn, String rentalType, String roomStandard, int numberOfFloors) {
-        super(serviceName, area, rentalCosts, numberOfPeopleIn, rentalType);
+    public House(String idService, String serviceName, double area, double rentalCosts, int numberOfPeopleIn, String rentalType, String roomStandard, int numberOfFloors) {
+        super(idService, serviceName, area, rentalCosts, numberOfPeopleIn, rentalType);
         this.roomStandard = roomStandard;
         this.numberOfFloors = numberOfFloors;
     }
@@ -30,10 +29,24 @@ public class House extends Facility {
         this.numberOfFloors = numberOfFloors;
     }
 
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",
+                this.getIdService(),
+                this.getServiceName(),
+                this.getArea(),
+                this.getRentalCosts(),
+                this.getMaxNumberOfPeople(),
+                this.getRentalType(),
+                this.getRoomStandard(),
+                this.getNumberOfFloors());
+
+
+    }
+
     @Override
     public String toString() {
-        return "Tiêu chuẩn phòng " + getRoomStandard() +
-                ", Số tầng" + getNumberOfFloors() +
-                super.toString();
+        return super.toString() +
+                ", Tiêu chuẩn phòng " + getRoomStandard() +
+                ", Số tầng " + getNumberOfFloors() ;
     }
 }
