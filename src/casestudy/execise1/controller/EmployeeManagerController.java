@@ -14,10 +14,13 @@ public class EmployeeManagerController {
         do {
             while (true) {
                 try {
-                    System.out.println("1. Danh sách hiển thị nhân viên\n" +
+                    System.out.println("===Quản lí nhân viên===\n" +
+                            "1. Danh sách hiển thị nhân viên\n" +
                             "2. Thêm nhân viên mới\n" +
                             "3. Chỉnh sửa nhân viên\n" +
-                            "4. Quay lại menu chính");
+                            "4. Tìm kiếm nhân viên\n" +
+                            "5. Xóa nhân viên\n" +
+                            "6. Quay lại menu chính");
                     System.out.println("Mời bạn nhập lựa chọn: ");
                     choose = Integer.parseInt(scanner.nextLine());
                     break;
@@ -37,6 +40,12 @@ public class EmployeeManagerController {
                     employee.edit();
                     break;
                 case 4:
+                    employee.find();
+                    break;
+                case 5:
+                    employee.remove();
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("vui lòng nhập lại");

@@ -30,7 +30,7 @@ public class FileEmployee {
         for (String line : stringList) {
             info = line.split(",");
             if (info.length == 10) {
-                employeeList.add(new Employee(Integer.parseInt(info[0]), info[1], info[2], info[3], Integer.parseInt(info[4]), (info[5]),
+                employeeList.add(new Employee(info[0], info[1], info[2], info[3], info[4], (info[5]),
                         info[6], info[7], info[8], Double.parseDouble(info[9])));
             }
         }

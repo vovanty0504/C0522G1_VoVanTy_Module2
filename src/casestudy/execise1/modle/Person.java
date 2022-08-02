@@ -1,18 +1,18 @@
 package casestudy.execise1.modle;
 
 public abstract class Person {
-    private int id;
+    private String id;
     private String name;
     private String dateOfBirth;
     private String gender;
-    private int idCard;
+    private String idCard;
     private String phone;
     private String email;
 
     public Person() {
     }
 
-    public Person(int id, String name, String dateOfBirth, String gender, int idCard, String phone, String email) {
+    public Person(String id, String name, String dateOfBirth, String gender, String idCard, String phone, String email) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -22,11 +22,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -54,11 +54,11 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
