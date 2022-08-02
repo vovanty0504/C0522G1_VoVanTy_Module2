@@ -69,6 +69,8 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
+    public abstract String getInfo();
+
 
 
 

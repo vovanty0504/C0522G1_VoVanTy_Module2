@@ -36,7 +36,7 @@ public class MenuUtils {
         } while (true);
     }
 
-    public static String location() {
+    public static String position() {
         int choose;
         do {
             while (true) {
@@ -86,7 +86,7 @@ public class MenuUtils {
                             "2. Bạc\n" +
                             "3. Vàng\n" +
                             "4. Bạch kim\n" +
-                            "5.Kim cương\n");
+                            "5.Kim cương");
 
                     System.out.print("Nhập lựa chọn: ");
                     choose = Integer.parseInt(SCANNER.nextLine());
@@ -144,4 +144,24 @@ public class MenuUtils {
             }
         } while (true);
     }
+
+    public static String getName() {
+        System.out.print("Nhập name: ");
+        String name = SCANNER.nextLine();
+        String[] arr = name.toLowerCase().trim().split("");
+        StringBuilder str = new StringBuilder().append(arr[0].toUpperCase());
+        for (int i = 1; i < arr.length; i++) {
+            if (!arr[i].equals(" ")) {
+                if (arr[i - 1].equals(" ")) {
+                    str.append(arr[i].toUpperCase());
+                } else {
+                    str.append(arr[i]);
+                }
+            } else if (!arr[i + 1].equals(" ")) {
+                str.append(arr[i]);
+            }
+        }
+        return str.toString();
+    }
+
 }

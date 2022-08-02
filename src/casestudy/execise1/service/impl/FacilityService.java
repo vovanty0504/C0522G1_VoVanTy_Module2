@@ -127,6 +127,7 @@ public class FacilityService implements IFacilityService {
                 System.out.println(e.getMessage());
             }
         }
+
         String rentalType = MenuUtils.rentalType();
         facility.setRentalType(rentalType);
         facility.setIdService(serviceId);
@@ -181,7 +182,7 @@ public class FacilityService implements IFacilityService {
                             System.out.print("Nhập diện tích hồ bơi (m2): ");
                             poolArea = Double.parseDouble(SCANNER.nextLine());
                             if (poolArea <= 30) {
-                                throw new AreaInvalidException("Diện tích phải lớn hơn 30m2!");
+                                throw new AreaInvalidException("Diện tích phải > 30m2!");
                             }
                             break;
                         } catch (NumberFormatException e) {

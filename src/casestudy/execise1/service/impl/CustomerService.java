@@ -4,6 +4,7 @@ import casestudy.execise1.modle.Customer;
 import casestudy.execise1.service.ICustomerService;
 import casestudy.execise1.utils.FileCustomer;
 import casestudy.execise1.utils.MenuUtils;
+import casestudy.execise1.utils.RegexUtil;
 import ss00_mvc_haitt.exception.DuplicateIDException;
 
 import java.util.LinkedList;
@@ -90,7 +91,7 @@ public class CustomerService implements ICustomerService {
                 customer.setEmail(email);
 
                 System.out.print("Loại khách hàng:");
-                customer.setCustomerType(SCANNER.nextLine());
+                customer.setCustomerType(MenuUtils.customer());
 
                 System.out.print("địa chỉ:");
                 customer.setAddress(SCANNER.nextLine());
@@ -136,11 +137,11 @@ public class CustomerService implements ICustomerService {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.print("Nhập họ và tên: ");
-        String name = SCANNER.nextLine();
+
+        String name = MenuUtils.getName();
 
         System.out.print("nhập ngày sinh");
-        String dateOfBirth = SCANNER.nextLine();
+        String dateOfBirth = RegexUtil.getDateOfBirth();
 
         System.out.print("nhập giới tính ");
         String gender = SCANNER.nextLine();

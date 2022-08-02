@@ -4,6 +4,7 @@ import casestudy.execise1.modle.Employee;
 import casestudy.execise1.service.IEmployeeService;
 import casestudy.execise1.utils.FileEmployee;
 import casestudy.execise1.utils.MenuUtils;
+import casestudy.execise1.utils.RegexUtil;
 import ss00_mvc_haitt.exception.DuplicateIDException;
 
 import java.util.List;
@@ -32,10 +33,10 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println("vui lòng nhập lại để cập nhập thông tin!");
 
                 System.out.print("Nhập họ và tên: ");
-                employee.setName(SCANNER.nextLine());
+                employee.setName(MenuUtils.getName());
 
-                System.out.print("nhập ngày sinh: ");
-                employee.setDateOfBirth(SCANNER.nextLine());
+
+                employee.setDateOfBirth(RegexUtil.getDateOfBirth());
 
                 System.out.print("nhập giới tính: ");
                 employee.setGender(SCANNER.nextLine());
@@ -81,11 +82,11 @@ public class EmployeeService implements IEmployeeService {
                 }
                 employee.setEmail(email);
 
-                System.out.print("trình độ học vấn: ");
-                employee.setLevel(SCANNER.nextLine());
+
+                employee.setLevel(MenuUtils.lever());
 
                 System.out.print("vị trí: ");
-                employee.setPosition(SCANNER.nextLine());
+                employee.setPosition(MenuUtils.position());
 
                 while (true) {
                     try {
@@ -144,11 +145,10 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.print("Nhập họ và tên: ");
-        String name = SCANNER.nextLine();
 
-        System.out.print("nhập ngày sinh");
-        String dateOfBirth = SCANNER.nextLine();
+        String name = MenuUtils.getName();
+
+        String dateOfBirth = RegexUtil.getDateOfBirth();
 
         System.out.print("nhập giới tính ");
         String gender = SCANNER.nextLine();
@@ -191,11 +191,9 @@ public class EmployeeService implements IEmployeeService {
             }
         }
 
-
         String level = MenuUtils.lever();
 
-
-        String position = MenuUtils.location();
+        String position = MenuUtils.position();
 
         double wage;
         while (true) {

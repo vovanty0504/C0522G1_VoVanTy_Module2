@@ -3,7 +3,7 @@ package casestudy.execise1.controller;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
+    public static void displayFurama() {
         Scanner scanner = new Scanner(System.in);
         EmployeeManagerController employee = new EmployeeManagerController();
         CustomerManagementController customer = new CustomerManagementController();
@@ -50,7 +50,7 @@ public class FuramaController {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("vui lòng nhập lại");
+                    System.err.println("vui lòng nhập lại");
 
             }
         } while (true);
