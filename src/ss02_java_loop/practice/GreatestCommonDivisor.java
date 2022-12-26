@@ -7,9 +7,9 @@ public class GreatestCommonDivisor {
         int numberFirst;
         int numberSecond;
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhập A: ");
+        System.out.println("Nhập XeTai: ");
         numberFirst = input.nextInt();
-        System.out.println("Nhập B: ");
+        System.out.println("Nhập XeOTo: ");
         numberSecond = input.nextInt();
 
         numberFirst = Math.abs(numberFirst);

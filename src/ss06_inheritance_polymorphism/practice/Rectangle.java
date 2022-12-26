@@ -45,7 +45,7 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "A Rectangle with width="
+        return "XeTai Rectangle with width="
                 + getWidth()
                 + " and length="
                 + getLength()

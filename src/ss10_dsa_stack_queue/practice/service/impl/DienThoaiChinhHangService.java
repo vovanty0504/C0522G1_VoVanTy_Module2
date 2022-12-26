@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class DienThoaiChinhHangService implements IDienThoaiChinhHangService {
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATH = "src/s0_null/practice/data/dienthoaichinhhang.csv";
+    private static final String PATH = "src/ss10_dsa_stack_queue/practice/data/dienthoaichinhhang.csv";
 
     @Override
     public void add() {
@@ -99,7 +99,7 @@ public class DienThoaiChinhHangService implements IDienThoaiChinhHangService {
 
         do {
             System.out.println("Mời bạn nhập id cần xóa: ");
-            timSanPham = Integer.parseInt(SCANNER.nextLine());
+             timSanPham = Integer.parseInt(SCANNER.nextLine());
             for (DienThoai dienThoai : dienThoaiList) {
                 if (dienThoai.getId() == timSanPham) {
                     System.out.println("Điện thoại cần xóa: ");

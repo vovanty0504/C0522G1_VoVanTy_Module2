@@ -1,0 +1,9 @@
+
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Úº´
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›áÜÏ
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(éçü‰ıÿÿÿÿ8™­‚Ï0
+Q	java:S125	"<This block of commented-out lines of code should be removed.(‹Éÿ¼
+I
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ
+G
+java:S1128",Remove this unused import 'java.util.Stack'.(ŞÈ†üúÿÿÿÿ

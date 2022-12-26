@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class DienThoaiXachTayService implements IDienThoaiXachTayService {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATH = "src/s0_null/practice/data/dienthoaixachtay.csv";
+    private static final String PATH = "src/ss10_dsa_stack_queue/practice/data/dienthoaixachtay.csv";
 
     @Override
     public void add() {

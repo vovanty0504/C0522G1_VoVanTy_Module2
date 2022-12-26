@@ -31,7 +31,7 @@ public abstract class Shape{
 
     @Override
     public String toString() {
-        return "A Shape with color of "
+        return "XeTai Shape with color of "
                 + getColor()
                 + " and "
                 + (isFilled() ? "filled" : "not filled");

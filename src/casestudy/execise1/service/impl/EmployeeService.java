@@ -95,12 +95,10 @@ public class EmployeeService implements IEmployeeService {
                         }
                     } while (true);
                 }
-
                 isExist = true;
                 break;
             }
         }
-
         if (!isExist) {
             System.out.println("Không tìm thấy!");
         }
@@ -120,7 +118,6 @@ public class EmployeeService implements IEmployeeService {
         List<Employee> employeeList = FileEmployee.readEmployeeFile(PATH);
         for (Employee employee1 : employeeList)
             System.out.println(employee1);
-
     }
 
     @Override
@@ -185,7 +182,6 @@ public class EmployeeService implements IEmployeeService {
                         throw new DuplicateIDException("Mã nhân viên đã tồn tại, vui lòng nhập lại!");
                     }
                 }
-
                 break;
             } catch (IdFormatException | DuplicateIDException e) {
                 System.out.println(e.getMessage());
